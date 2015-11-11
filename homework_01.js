@@ -1,5 +1,5 @@
-//esercizi mancanti (Iterativi): 8 
-//esercizi mancanti (Ricorsivi): 5, 6, 8, 10, 11
+﻿//esercizi mancanti (Iterativi): 8 
+//esercizi mancanti (Ricorsivi): 8, 11.
 
 
 //01 iterativo
