@@ -90,8 +90,8 @@ function ex_03_R(n){
 
 //04 iterativo
 /*Dato un intervallo [a, b] con a e b due interi positivi, restituire la somma di tutti i numeri
-compresi all’interno dell’intervallo, estremi inclusi. Nel caso che b fosse minore di a,
-calcolare la somma nell’intervallo [b,a]*/
+compresi allï¿½interno dellï¿½intervallo, estremi inclusi. Nel caso che b fosse minore di a,
+calcolare la somma nellï¿½intervallo [b,a]*/
 
 function ex_04_I(x, y) {
     s = 0;
@@ -112,8 +112,8 @@ function ex_04_I(x, y) {
 
 //04 ricorsivo
 /*Dato un intervallo [a, b] con a e b due interi positivi, restituire la somma di tutti i numeri
-compresi all’interno dell’intervallo, estremi inclusi. Nel caso che b fosse minore di a,
-calcolare la somma nell’intervallo [b,a]*/
+compresi allï¿½interno dellï¿½intervallo, estremi inclusi. Nel caso che b fosse minore di a,
+calcolare la somma nellï¿½intervallo [b,a]*/
 
 function ex_04_R(x, y) {
     if(x > y) {
@@ -127,7 +127,7 @@ function ex_04_R(x, y) {
 /////////////////////////////////////////////////////////////////
 
 //05 iterativo
-//Si calcoli il prodotto di due numeri a, b maggiori o uguali a zero, tramite l’utilizzo del solo operatore somma.
+//Si calcoli il prodotto di due numeri a, b maggiori o uguali a zero, tramite lï¿½utilizzo del solo operatore somma.
 function ex_05_I(x, y) {
 	if((x >= 0) || (y >= 0)) {
 		TR = 0;
@@ -140,29 +140,65 @@ function ex_05_I(x, y) {
 
 ///////////////////////////////////////////////////////////////////
 
+//05 ricorsivo
+//Si calcoli il prodotto di due numeri a, b maggiori o uguali a zero, tramite lï¿½utilizzo del solo operatore somma.
+
+function ex_05_R(a, b) {
+	if((a < 0) || (b <= 0))
+	{
+		return 0;
+	}
+	else {
+		return a + ex_05_R(a, b - 1); 
+	}
+}
+///////////////////////////////////////////////////////////////////
+
 //06 iterativo
 /*Si calcoli la divisione e il resto della divisione tra due numeri a, b maggiori a zero, tramite
-l’utilizzo dei soli operatori somma e sottrazione.*/
+lï¿½utilizzo dei soli operatori somma e sottrazione.*/
 
-function ex_06_I(x, y) { //3:2 1 1
+function ex_06_I(dividendo, divisore) { //5:3 1 2
 	
-		q = 0;
-        r = 0;
-		while(r + y <= x) {
+		quoziente = 0;
+        resto = 0;
+		/*while(resto + divisore <= dividendo) {
 			
-			r += y;
-			q++;
+			resto += divisore;
+			quoziente++;
 		}
 		
-	console.log('quozionete:' + q);
-	console.log('resto:' + (x - r));
-	
+		console.log('quozionete:' + quoziente);
+		console.log('resto:' + (dividendo - resto));*/
+
+		while(dividendo - divisore >= 0) {
+			quoziente++;
+			dividendo -= divisore;
+			resto = dividendo;
+		}
+		console.log('quozionete:' + quoziente);
+		console.log('resto:' +  (resto));
+}
+
+//////////////////////////////////////////////////////////////////
+
+//06 ricorsivo
+/*Si calcoli la divisione e il resto della divisione tra due numeri a, b maggiori a zero, tramite
+lï¿½utilizzo dei soli operatori somma e sottrazione.*/
+
+function ex_06_R(a, b) {
+	if((a <= 0) || (a < b) ) {
+		return 0;
+	}
+	else {
+		return 1 + ex_06_R(a - b, b);
+	}
 }
 
 //////////////////////////////////////////////////////////////////
 
 //07 iterativo
-/*Si calcoli la potenza (x^y) di due numeri x y maggiori o uguali a zero, tramite l’utilizzo dei soli
+/*Si calcoli la potenza (x^y) di due numeri x y maggiori o uguali a zero, tramite lï¿½utilizzo dei soli
 operatori somma, sottrazione e della funzione mult.*/
 
 function ex_07_I(x, y)
@@ -180,7 +216,7 @@ function ex_07_I(x, y)
 //////////////////////////////////////////////////////////////////
 
 //07 ricorsivo
-/*Si calcoli la potenza (x^y) di due numeri x y maggiori o uguali a zero, tramite l’utilizzo dei soli
+/*Si calcoli la potenza (x^y) di due numeri x y maggiori o uguali a zero, tramite lï¿½utilizzo dei soli
 operatori somma, sottrazione e della funzione mult.*/
 
 function ex_07_R(x, y, z) {
@@ -195,7 +231,7 @@ function ex_07_R(x, y, z) {
 //////////////////////////////////////////////////////////////////
 
 //09 iterativo
-//Dato una lista di elementi, scrivere un algoritmo che permetta di invertire l’ordine degli elementi.
+//Dato una lista di elementi, scrivere un algoritmo che permetta di invertire lï¿½ordine degli elementi.
 
 function ex_09_I(a) {
 	b = [];
@@ -210,7 +246,7 @@ function ex_09_I(a) {
 //////////////////////////////////////////////////////////////////
 
 //09 ricorsivo
-//Dato una lista di elementi, scrivere un algoritmo che permetta di invertire l’ordine degli elementi.
+//Dato una lista di elementi, scrivere un algoritmo che permetta di invertire lï¿½ordine degli elementi.
 
 function ex_09_R(a, b) {
 	if(a.length == 0) {
@@ -241,6 +277,23 @@ function ex_10_I(x, y) {
 } 
 
 //////////////////////////////////////////////////////////////////
+
+//10 ricorsivo
+//Dati due interi a, n maggiori di 0, scrivere un algoritmo che crea un lista di n elementi contenenti a.
+function ex_10_R(x, y, a) {
+	if((x < 0) || (y <= 0)) {
+		return a;
+	}
+	else {
+		a[a.length] = x;
+		return ex_10_R(x, y-1, a);
+	}
+}
+
+function Fex_10_R(x, y) {
+	a = [];
+	return ex_10_R(x, y, a);
+}
 
 //11 iterativo
 /*Data una lista di interi A, si riordini gli elementi della lista in modo tale che tutti gli elementi
