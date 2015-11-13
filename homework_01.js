@@ -1,4 +1,4 @@
-﻿//esercizi mancanti (Iterativi): 8 
+//esercizi mancanti (Iterativi): 8 
 //esercizi mancanti (Ricorsivi): 8, 11.
 
 
@@ -9,9 +9,9 @@ negativo.*/
 function sumTillNeg(a) {
     s = 0;
     for(i = 0; i < a.length; i++) {
-        if(a[i] < 0) {
+        if(a[i] < 0) 
            return s;
-       }
+
         s = s + a[i];
     }
     return s;
@@ -19,14 +19,7 @@ function sumTillNeg(a) {
 
 //Per Tiziano
 function ex_1_I(a) {
-    s = 0;
-    for(i = 0; i < a.length; i++) {
-        if(a[i] < 0) {
-           return s;
-       }
-        s = s + a[i];
-    }
-    return s;
+	return sumTillNeg(a);
 }
 
 //////////////////////////////////////////////////
@@ -34,27 +27,21 @@ function ex_1_I(a) {
 //01 ricorsivo
 /*Dato un array di interi, restituire la loro somma fino a che non viene ritrovato un valore
 negativo.*/
+
 function sumTillNegR(a) {
-        if(a.length == 0) {
+        if(a.length == 0) 
            return 0;
-       }
-        if (a[0] < 0) {
+
+        if (a[0] < 0) 
             return 0;
-        }else {
+
+        else 
             return a[0] + sumTillNegR(a.slice(1));
-        }
 }
 
 //Per Tiziano
 function ex_1_R(a) {
-        if(a.length == 0) {
-           return 0;
-       }
-        if (a[0] < 0) {
-            return 0;
-        }else {
-            return a[0] + ex_1_R(a.slice(1));
-        }
+    return sumTillNegR(a);
 }
 
 
@@ -66,22 +53,15 @@ function ex_1_R(a) {
 function sumFirstInt(n) {
     s = 0;
     for(i = 0; i < (n*2); i++) {
-        if((i%2) != 0) {
+        if((i%2) != 0) 
             s = s + i;
-        } 
     }
     return s;
 }
 
 //Per Tiziano
 function ex_2_I(n) {
-    s = 0;
-    for(i = 0; i < (n*2); i++) {
-        if((i%2) != 0) {
-            s = s + i;
-        } 
-    }
-    return s;
+    return sumFirstInt(n);
 }
 
 ///////////////////////////////////////////////////////////////
@@ -89,31 +69,17 @@ function ex_2_I(n) {
 //02 ricorsivo
 //Dato un numero n, restituire la somma dei primi n numeri interi positivi dispari
 
-function sumFirstIntR(n, i) {
+function sumFirstIntR(n) {
         
-        if (n == 0) {
+        if (n == 0) 
             return 0;
-        }
-        else if(i % 2 == 0) {
-            	return 1 + sumFirstIntR(n, i++);
-        }
-        else {
-              return sumFirstIntR(n--, i++);
-        }
+        else 
+        	return 2 * n - 1 + sumFirstIntR(n - 1);
 }
 
 //Per Tiziano
-function ex_2_R(n, i) {
-        
-        if (n == 0) {
-            return 0;
-        }
-        else if(i % 2 == 0) {
-            	return 1 + ex_2_R(n, i++);
-        }
-        else {
-              return ex_2_R(n--, i++);
-        }
+function ex_2_R(n) {
+	return sumFirstIntR(n);
 }
 
 ////////////////////////////////////////////////////////////////
@@ -121,17 +87,15 @@ function ex_2_R(n, i) {
 //03 iterativo
 //Dato un array di 10 elementi, calcolarne la media
 
-function avg(n) {
+function avg(a) {
     m = 0;
-    m = ex_1_I(n) / n.length;
+    m = sumTillNeg(a) / a.length;
     return m;
 }
 
 //Per Tiziano
-function ex_3_I(n) {
-    m = 0;
-    m = ex_1_I(n) / n.length;
-    return m;
+function ex_3_I(a) {
+    return avg(a);
 }
 
 //////////////////////////////////////////////////////////////
@@ -139,19 +103,20 @@ function ex_3_I(n) {
 //03 ricorsivo
 //Dato un array di 10 elementi, calcolarne la media
 
-function avgR(n){
-    return avgR(n) / n.length;
+function avgR(a) {
+    return sumTillNegR(a) / a.length;
 }
 
 //Per Tiziano
-function ex_3_R(n){
-    return ex_1_R(n) / n.length;
+function ex_3_R(a) {
+    return sumTillNegR(a) / a.length;
 }
 
 ////////////////////////////////////////////////////////////////
 
 //04 iterativo
-/*Dato un intervallo [a, b] con a e b due interi positivi, restituire la somma di tutti i numeri compresi all�interno dell�intervallo, estremi inclusi. Nel caso che b fosse minore di a, calcolare la somma nell�intervallo [b,a]*/
+/*Dato un intervallo [a, b] con a e b due interi positivi, restituire la somma di tutti i numeri
+ compresi all�interno dell�intervallo, estremi inclusi. Nel caso che b fosse minore di a, calcolare la somma nell�intervallo [b,a]*/
 
 function sumInter(x, y) {
     s = 0;
@@ -160,7 +125,7 @@ function sumInter(x, y) {
             s = s + i;
         }
         return s;
-    }else {
+    } else {
         for (i = x; i <= y; i++) {
             s = s + i;
         }
@@ -176,7 +141,7 @@ function ex_4_I(x, y) {
             s = s + i;
         }
         return s;
-    }else {
+    } else {
         for (i = x; i <= y; i++) {
             s = s + i;
         }
@@ -193,22 +158,23 @@ compresi all�interno dell�intervallo, estremi inclusi. Nel caso che b fosse 
 calcolare la somma nell�intervallo [b,a]*/
 
 function sumInterR(x, y) {
-    if(x > y) {
-    	return 0;
-    }
-    if (x > y) {
+	if (x > y)
+		return 0;
+	else {
+		return x + sumInterR(x + 1, y);
+	}
+}
+
+function FSumInterR(x, y) {
+	if(x > y) 
     	return sumInterR(y, x);
-    }
+	else 
+    	return sumInterR(x, y);
 }
 
 //Per Tiziano
 function ex_4_R(x, y) {
-    if(x > y) {
-    	return 0;
-    }
-    if (x > y) {
-    	return ex_4_R(y, x);
-    }
+    return FSumInterR(x, y);
 }
 
 /////////////////////////////////////////////////////////////////
@@ -243,23 +209,19 @@ function ex_5_I(x, y) {
 
 function multR(a, b) {
 	if((a < 0) || (b <= 0))
-	{
 		return 0;
-	}
-	else {
+
+	else 
 		return a + multR(a, b - 1); 
-	}
 }
 
 //Per Tiziano
 function ex_5_R(a, b) {
 	if((a < 0) || (b <= 0))
-	{
 		return 0;
-	}
-	else {
+
+	else 
 		return a + ex_5_R(a, b - 1); 
-	}
 }
 ///////////////////////////////////////////////////////////////////
 
@@ -293,12 +255,13 @@ function div(dividendo, divisore) { //5:3 1 2
 function ex_6_I(dividendo, divisore) { 
 	
 	quoziente = 0;
-      resto = 0;
+    resto = 0;
 	while(dividendo - divisore >= 0) {
-	quoziente++;
-	dividendo -= divisore;
-	resto = dividendo;
+		quoziente++;
+		dividendo -= divisore;
+		resto = dividendo;
 	}
+
 	console.log('quozionete:' + quoziente);
 	console.log('resto:' +  (resto));
 }
@@ -310,22 +273,18 @@ function ex_6_I(dividendo, divisore) {
 l�utilizzo dei soli operatori somma e sottrazione.*/
 
 function divR(a, b) {
-	if((a <= 0) || (a < b) ) {
+	if((a <= 0) || (a < b) ) 
 		return 0;
-	}
-	else {
+	else 
 		return 1 + divR(a - b, b);
-	}
 }
 
 //Per Tiziano
 function ex_6_R(a, b) {
-	if((a <= 0) || (a < b) ) {
+	if((a <= 0) || (a < b) ) 
 		return 0;
-	}
-	else {
+	else 
 		return 1 + ex_6_R(a - b, b);
-	}
 }
 
 //////////////////////////////////////////////////////////////////
@@ -334,8 +293,7 @@ function ex_6_R(a, b) {
 /*Si calcoli la potenza (x^y) di due numeri x y maggiori o uguali a zero, tramite l�utilizzo dei soli
 operatori somma, sottrazione e della funzione mult.*/
 
-function pot(x, y)
-{
+function pot(x, y) {
 	if((x >= 0) || (y >= 0)) {
 		p = x;
 		while(y > 1) {
@@ -347,8 +305,7 @@ function pot(x, y)
 }
 
 //Per Tiziano
-function ex_7_I(x, y)
-{
+function ex_7_I(x, y) {
 	if((x >= 0) || (y >= 0)) {
 		p = x;
 		while(y > 1) {
@@ -365,23 +322,24 @@ function ex_7_I(x, y)
 /*Si calcoli la potenza (x^y) di due numeri x y maggiori o uguali a zero, tramite l�utilizzo dei soli
 operatori somma, sottrazione e della funzione mult.*/
 
-function potR(x, y, z) {
-	if(y == 1) {
-		return z;
-	} else {
-		return potR(x, y-1, mult(x,z));
-	}
+function potR(x, y) {
+	if(x == 1) 
+		return x;
+	else 
+		return potR(x, y-1, mult(x,x));
+}
 
+function FPotR(x, y) {
+	z = 0;
+	return potR(x, y);
 }
 
 //Per Tiziano
 function ex_7_R(x, y, z) {
-	if(y == 1) {
+	if(y == 1) 
 		return z;
-	} else {
+	else 
 		return ex_7_R(x, y-1, ex_5_R(x,z));
-	}
-
 }
 
 //////////////////////////////////////////////////////////////////
@@ -400,7 +358,7 @@ function invert(a) {
 }
 
 //Per Tiziano
-function ex_09_I(a) {
+function ex_9_I(a) {
 	b = [];
 	j = 0;
 	for(i = a.length - 1; i >= 0; i--) {
@@ -416,32 +374,32 @@ function ex_09_I(a) {
 //Dato una lista di elementi, scrivere un algoritmo che permetta di invertire l�ordine degli elementi.
 
 function invertR(a, b) {
-	if(a.length == 0) {
+	if(a.length == 0) 
 		return b;
-	} else {
+	else {
 		b[b.length] = a[a.length - 1];
 		return invertR(a.slice(0, a.length - 1), b);
 	}
 }
 
-function FEx_09_R(a) {
+function FInvert(a) {
 	b = [];
 	return invertR(a, b);
 }
 
 //Per Tiziano
-function Fex_9_R(a, b) {
-	if(a.length == 0) {
+function FEx_9_R(a, b) {
+	if(a.length == 0) 
 		return b;
-	} else {
+	else {
 		b[b.length] = a[a.length - 1];
-		return ex_9_R(a.slice(0, a.length - 1), b);
+		return FEx_9_R(a.slice(0, a.length - 1), b);
 	}
 }
 
 function ex_9_R(a) {
 	b = [];
-	return ex_9_R(a, b);
+	return FEx_9_R(a, b);
 }
 
 
@@ -474,9 +432,8 @@ function ex_10_I(x, y) {
 //10 ricorsivo
 //Dati due interi a, n maggiori di 0, scrivere un algoritmo che crea un lista di n elementi contenenti a.
 function repeatNumR(x, y, a) {
-	if((x < 0) || (y <= 0)) {
+	if((x < 0) || (y <= 0)) 
 		return a;
-	}
 	else {
 		a[a.length] = x;
 		return repeatNumR(x, y-1, a);
@@ -489,19 +446,18 @@ function FRepeatNumR(x, y) {
 }
 
 //Per Tiziano
-function Fex_10_R(x, y, a) {
-	if((x < 0) || (y <= 0)) {
+function FEx_10_R(x, y, a) {
+	if((x < 0) || (y <= 0)) 
 		return a;
-	}
 	else {
 		a[a.length] = x;
-		return ex_10_R(x, y-1, a);
+		return FEx_10_R(x, y-1, a);
 	}
 }
 
 function ex_10_R(x, y) {
 	a = [];
-	return ex_10_R(x, y, a);
+	return FEx_10_R(x, y, a);
 }
 
 
